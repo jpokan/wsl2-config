@@ -1,39 +1,40 @@
-set number
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+runtime sets.vim
 
-" Plugins will be downloaded under the specified directory.
-call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+" Plugins with vim-plug
+runtime plugins.vim
 
-" Declare the list of plugins.
+" Set bar and block cursors on diffrent modes
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[2 q"
 
-" Theme
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'arcticicestudio/nord-vim'
+" Syntax highlighting enabled
+syntax enable
 
-" Editor
-Plug 'b3nj5m1n/kommentary'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'yggdroot/indentline'
+" For Goyo
 
-" File manager
-Plug 'preservim/nerdtree'
+let g:goyo_width = 120
+function! s:tweak_sunbather_colors()
+	" Your molokai customizations
+	highlight Directory ctermfg=15 guifg=#ffffff
+endfunction
+autocmd! ColorScheme sunbather call s:tweak_sunbather_colors()
 
-" Typing
-Plug 'jiangmiao/auto-pairs'
-Plug 'alvan/vim-closetag'
-Plug 'tpope/vim-surround'
+" Theme tweaks
+colorscheme sunbather
+let g:airline_theme='minimalist'
 
-" Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+" Transparency
+highlight Normal guibg=none
+highlight NonText guibg=none
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
 
-" List ends here. Plugins become visible to Vim after this call.
-call plug#end()
+runtime remaps.vim
 
-" Initiate nvim with file tree open
-autocmd VimEnter * NERDTree | wincmd p
-colorscheme nord
+" source all plugin configs
+for f in split(globpath(stdpath('config').'/plugin-config', '**'), '\n')
+	exe 'source' f
+endfor
+
+autocmd BufEnter * :syntax sync fromstart
 

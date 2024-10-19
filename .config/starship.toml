@@ -10,8 +10,8 @@ add_newline = true
 success_symbol = "[❱❱❱](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green" ▂
 error_symbol = "[❱❱❱](bold red)"
 
-# [directory.substitutions]
-# "~/Envs" = "Envs "
+[directory.substitutions]
+"~/Envs" = "Envs"
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -37,5 +37,3 @@ disabled = false
 # symbol = "\u2618 "
 # symbol = "[\u2D62](bold purple) "
 # symbol = "[\u2731](bold purple) "
-
-

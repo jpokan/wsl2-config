@@ -116,12 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-LS_COLORS=$LS_COLORS:'ow=4;97:' ; export LS_COLORS
+alias envs="cd ~/Envs"
 
-# starship config
-export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init bash)"
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
