@@ -107,6 +107,24 @@ If you see any errors, check the dependencies on your linux subsystem.
 Another common case might be because the newer versions of the plugins broke something.
 In this case, try commenting out the plugin from `plugins.vim` file in `nvim/` folder.
 
+### Run Mason and install packages
+```
+:Mason
+```
+The command above will open the Mason user interface which you can use to install other packages needed.
+
+Install the following:
+`emmet-language-server`
+`json-lsp`
+`lua-language-server`
+`prettierd`
+`stylua`
+`tailwindcss-language-server`
+`vim-language-server`
+`vue-language-server`
+
+Some of these packages might change over time, so if any of them break, try to check the package repo for updated information.
+
 ### Final notes
 - Starship
 - Nvm
